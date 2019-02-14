@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><input type="text" name="search" [(ngModel)]="search" placeholder="Search by title" /> Title</th>
+            <th scope="col">Url</th>
+            <th scope="col">Created_at</th>
+            <th scope="col">Auther</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let value of assignmentData | filter: search;" class="pointer" data-toggle="modal" data-target="#exampleModalCenter" (click)="jsonObject(value)" >
+            <th scope="row">{{value?.title}}</th>
+            <td>{{value?.url}}</td>
+            <td>{{value?.created_at}}</td>
+            <td>{{value?.author}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Json Object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6"><label><strong>Title:</strong></label> {{jsonValue?.title}}</div>
+            <div class="col-md-6"><label><strong>Url:</strong></label> {{jsonValue?.url}}</div>
+          </div>
+          <div class="row">
+              <div class="col-md-6"><label><strong>Created_at:</strong></label> {{jsonValue?.created_at}}</div>
+              <div class="col-md-6"><label><strong>Author:</strong></label> {{jsonValue?.author}}</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
